@@ -57,5 +57,5 @@ I write code to automate my laziness - because why do something manually when yo
 ---
 
 <div align="center">
-  <img src="https://github.com/Ryuzii/Ryuzii/blob/main/snake.svg" alt="Snake animation" />
+  <img src="https://raw.githubusercontent.com/Ryuzii/Ryuzii/refs/heads/main/snake.svg" alt="Snake" />
 </div> 
