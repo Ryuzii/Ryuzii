@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 1000 600">
+  <style>
+    .background {
+      fill: #0D1117;
+    }
+    .snake-segment {
+      fill: #0D4429;
+      rx: 5;
+      ry: 5;
+    }
+    .snake-segment:nth-child(5n+1) {
+      fill: #006D32;
+    }
+    .snake-segment:nth-child(5n+3) {
+      fill: #26A641;
+    }
+    @keyframes moveHead {
+      0%, 100% { motion-offset: 0%; }
+      25% { motion-offset: 25%; }
+      50% { motion-offset: 50%; }
+      75% { motion-offset: 75%; }
+    }
+  </style>
+  
+  <rect class="background" x="0" y="0" width="100%" height="100%"/>
+  
+  <!-- Multiple random paths -->
+  <path id="path1" d="M-100,150 Q100,50 300,250 T600,100 T900,300 T1200,200" fill="none" stroke="none"/>
+  <path id="path2" d="M1100,450 Q900,550 700,350 T400,500 T100,300 T-200,400" fill="none" stroke="none"/>
+  <path id="path3" d="M-100,350 Q150,450 300,150 T500,350 T800,150 T1100,250" fill="none" stroke="none"/>
+  <path id="path4" d="M1100,150 Q850,250 600,450 T300,350 T0,450 T-300,350" fill="none" stroke="none"/>
+  
+  <!-- Snake segments -->
+  <g>
+    <!-- Head segment -->
+    <rect class="snake-segment" x="-30" y="-15" width="30" height="30">
+      <animateMotion dur="20s" repeatCount="indefinite" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <set attributeName="visibility" to="visible" begin="0s; path4Anim.end"/>
+      <set attributeName="visibility" to="hidden" begin="path1Anim.end"/>
+    </rect>
+    
+    <rect class="snake-segment" x="-30" y="-15" width="30" height="30">
+      <animateMotion id="path1Anim" dur="6s" begin="0s; path4Anim.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="path2Anim" dur="6s" begin="path1Anim.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="path3Anim" dur="6s" begin="path2Anim.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="path4Anim" dur="6s" begin="path3Anim.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <!-- Body segments with cascading delay -->
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg1path1" dur="6s" begin="0.2s; seg1path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg1path2" dur="6s" begin="seg1path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg1path3" dur="6s" begin="seg1path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg1path4" dur="6s" begin="seg1path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg2path1" dur="6s" begin="0.4s; seg2path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg2path2" dur="6s" begin="seg2path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg2path3" dur="6s" begin="seg2path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg2path4" dur="6s" begin="seg2path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg3path1" dur="6s" begin="0.6s; seg3path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg3path2" dur="6s" begin="seg3path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg3path3" dur="6s" begin="seg3path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg3path4" dur="6s" begin="seg3path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg4path1" dur="6s" begin="0.8s; seg4path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg4path2" dur="6s" begin="seg4path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg4path3" dur="6s" begin="seg4path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg4path4" dur="6s" begin="seg4path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg5path1" dur="6s" begin="1.0s; seg5path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg5path2" dur="6s" begin="seg5path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg5path3" dur="6s" begin="seg5path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg5path4" dur="6s" begin="seg5path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg6path1" dur="6s" begin="1.2s; seg6path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg6path2" dur="6s" begin="seg6path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg6path3" dur="6s" begin="seg6path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg6path4" dur="6s" begin="seg6path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg7path1" dur="6s" begin="1.4s; seg7path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg7path2" dur="6s" begin="seg7path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg7path3" dur="6s" begin="seg7path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg7path4" dur="6s" begin="seg7path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg8path1" dur="6s" begin="1.6s; seg8path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg8path2" dur="6s" begin="seg8path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg8path3" dur="6s" begin="seg8path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg8path4" dur="6s" begin="seg8path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg9path1" dur="6s" begin="1.8s; seg9path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg9path2" dur="6s" begin="seg9path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg9path3" dur="6s" begin="seg9path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg9path4" dur="6s" begin="seg9path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+    
+    <rect class="snake-segment" x="-25" y="-10" width="20" height="20">
+      <animateMotion id="seg10path1" dur="6s" begin="2.0s; seg10path4.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path1"/>
+      </animateMotion>
+      <animateMotion id="seg10path2" dur="6s" begin="seg10path1.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path2"/>
+      </animateMotion>
+      <animateMotion id="seg10path3" dur="6s" begin="seg10path2.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path3"/>
+      </animateMotion>
+      <animateMotion id="seg10path4" dur="6s" begin="seg10path3.end" fill="freeze" rotate="auto">
+        <mpath xlink:href="#path4"/>
+      </animateMotion>
+    </rect>
+  </g>
+</svg> 
